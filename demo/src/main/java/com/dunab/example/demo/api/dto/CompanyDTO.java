@@ -6,7 +6,7 @@ public class CompanyDTO {
 
     private String name;
 
-    private CompanyDTO parent;
+    private Long parent;
 
     public Long getId() {
         return id;
@@ -24,11 +24,11 @@ public class CompanyDTO {
         this.name = name;
     }
 
-    public CompanyDTO getParent() {
+    public Long getParent() {
         return parent;
     }
 
-    public void setParent(CompanyDTO parent) {
+    public void setParent(Long parent) {
         this.parent = parent;
     }
 }

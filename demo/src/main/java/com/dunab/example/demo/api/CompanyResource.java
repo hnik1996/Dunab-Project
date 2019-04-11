@@ -2,25 +2,39 @@ package com.dunab.example.demo.api;
 
 import com.dunab.example.demo.api.dto.CompanyDTO;
 import com.dunab.example.demo.model.entity.Company;
-import org.springframework.http.ResponseEntity;
+import com.dunab.example.demo.model.service.CompanyService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api")
 public class CompanyResource {
 
-    @RequestMapping(value = "/add-company", method = RequestMethod.POST)
+    @Autowired
+    private CompanyService companyService;
+
+
+    @RequestMapping(value = "/company", method = RequestMethod.POST)
     public @ResponseBody
-    ResponseEntity<CompanyDTO> addCompany(@RequestBody CompanyDTO dto) {
-        Company company = new Company();
-        company.setName(dto.getName());
-        if (dto.getParent() != null) {
-            Company parent = new Company();
-            parent.setName(dto.getParent().getName());
-            company.setParent(parent);
-        }
-        Long id = company.getId();
-        dto.setId(id);
-        return ResponseEntity.ok(dto);
+    Company addCompany(@RequestBody CompanyDTO dto) {
+        return companyService.add(dto);
+    }
+
+    @RequestMapping(value = "/company/{id}", method = RequestMethod.DELETE)
+    public @ResponseBody
+    Boolean delete(@PathVariable Long id) {
+        return companyService.delete(id);
+    }
+
+    @RequestMapping(value = "/company", method = RequestMethod.PUT)
+    public @ResponseBody
+    Company update(@RequestBody CompanyDTO dto) {
+        return companyService.update(dto);
+    }
+
+    @RequestMapping(value = "/company", method = RequestMethod.GET)
+    public @ResponseBody
+    Iterable<Company> list() {
+        return companyService.list();
     }
 }
