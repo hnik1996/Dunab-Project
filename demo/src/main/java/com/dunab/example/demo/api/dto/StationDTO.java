@@ -6,9 +6,9 @@ public class StationDTO {
 
     private String name;
 
-    private String latitude;
+    private Float latitude;
 
-    private String longtitude;
+    private Float longitude;
 
     public Long getId() {
         return id;
@@ -26,19 +26,19 @@ public class StationDTO {
         this.name = name;
     }
 
-    public String getLatitude() {
+    public Float getLatitude() {
         return latitude;
     }
 
-    public void setLatitude(String latitude) {
+    public void setLatitude(Float latitude) {
         this.latitude = latitude;
     }
 
-    public String getLongtitude() {
-        return longtitude;
+    public Float getLongitude() {
+        return longitude;
     }
 
-    public void setLongtitude(String longtitude) {
-        this.longtitude = longtitude;
+    public void setLongitude(Float longitude) {
+        this.longitude = longitude;
     }
 }

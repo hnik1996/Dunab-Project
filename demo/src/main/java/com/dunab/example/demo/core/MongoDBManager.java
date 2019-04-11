@@ -6,14 +6,14 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
 public class MongoDBManager {
-    private static final Logger logger = LoggerFactory.getLogger(MongoDBManager.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(MongoDBManager.class);
 
     @Autowired
     private MongoClient  mongoClient;
 
     private final String dbName;
-    public MongoDBManager(String dbname){
-        this.dbName = dbname;
+    public MongoDBManager(String dbName){
+        this.dbName = dbName;
 
     }
 
@@ -37,7 +37,7 @@ public class MongoDBManager {
         if (this.collectionExists(collectionName)) {
             return this.getCollection(collectionName);
         } else {
-            logger.info("Collecton with name : '" + collectionName + "' doesn't exists. creating it with inices: ->" + indices + " \n and indicesOptions: " + indicesOptions);
+            LOGGER.info("Collection with name : '" + collectionName + "' doesn't exists. creating it with inices: ->" + indices + " \n and indicesOptions: " + indicesOptions);
             DBCollection collection = this.getDB().createCollection(collectionName, (DBObject)null);
             if (!indices.isEmpty()) {
                 collection.dropIndexes();
@@ -56,7 +56,7 @@ public class MongoDBManager {
     public void deleteCollection(String collectionName) {
         DBCollection collection = this.getCollection(collectionName);
         if (collection == null) {
-            logger.debug("Collection with name '" + collectionName + "' doesn't exists");
+            LOGGER.debug("Collection with name '" + collectionName + "' doesn't exists");
         } else {
             collection.drop();
         }
