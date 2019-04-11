@@ -6,6 +6,8 @@ import com.dunab.example.demo.model.service.CompanyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Optional;
+
 @RestController
 @RequestMapping("/api")
 public class CompanyResource {
@@ -36,5 +38,12 @@ public class CompanyResource {
     public @ResponseBody
     Iterable<Company> list() {
         return companyService.list();
+    }
+
+    @RequestMapping(value = "/company/{id}", method = RequestMethod.GET)
+    public @ResponseBody
+    Company get(@PathVariable Long id) {
+        Optional<Company> companyOptional = companyService.get(id);
+        return companyOptional.orElseGet(Company::new);
     }
 }

@@ -55,4 +55,10 @@ public class CompanyService {
     public Iterable<Company> list(){
         return companyRepo.findAll();
     }
+
+    public Optional<Company> get(Long id){
+        return companyRepo.findById(id);
+    }
+
+
 }
