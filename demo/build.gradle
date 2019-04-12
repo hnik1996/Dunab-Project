@@ -19,7 +19,7 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation group: 'com.h2database', name: 'h2', version: '1.4.197'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
-	compile group: 'org.mongodb', name: 'mongo-java-driver', version: '3.2.2'
+	compile group: 'org.mongodb', name: 'mongo-java-driver'
 	compile group: 'org.springframework.boot', name: 'spring-boot-starter-data-mongodb', version: '1.5.1.RELEASE'
 
 }
