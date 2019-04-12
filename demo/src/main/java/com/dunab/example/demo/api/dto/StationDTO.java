@@ -6,9 +6,11 @@ public class StationDTO {
 
     private String name;
 
-    private Float latitude;
+    private Double latitude;
 
-    private Float longitude;
+    private Double longitude;
+
+    private Long company_id;
 
     public Long getId() {
         return id;
@@ -26,19 +28,27 @@ public class StationDTO {
         this.name = name;
     }
 
-    public Float getLatitude() {
+    public Double getLatitude() {
         return latitude;
     }
 
-    public void setLatitude(Float latitude) {
+    public void setLatitude(Double latitude) {
         this.latitude = latitude;
     }
 
-    public Float getLongitude() {
+    public Double getLongitude() {
         return longitude;
     }
 
-    public void setLongitude(Float longitude) {
+    public void setLongitude(Double longitude) {
         this.longitude = longitude;
+    }
+
+    public Long getCompany_id() {
+        return company_id;
+    }
+
+    public void setCompany_id(Long company_id) {
+        this.company_id = company_id;
     }
 }

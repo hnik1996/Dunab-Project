@@ -3,6 +3,7 @@ package com.dunab.example.demo.core;
 import com.mongodb.MongoClient;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.data.mongodb.core.MongoTemplate;
 
 import java.net.UnknownHostException;
 
@@ -15,7 +16,7 @@ public class MongodbConfiguration {
     }
 
     @Bean
-    public MongoDBManager mongoDBManager(){
-        return new MongoDBManager("dunab");
+    public MongoTemplate mongoTemplate() throws UnknownHostException {
+        return new MongoTemplate(mongoClient(),"dunab");
     }
 }
