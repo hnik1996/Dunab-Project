@@ -1,10 +1,13 @@
 package com.dunab.example.demo.api;
 
+import com.dunab.example.demo.api.dto.GeoDTO;
 import com.dunab.example.demo.api.dto.StationDTO;
 import com.dunab.example.demo.model.entity.Station;
 import com.dunab.example.demo.model.service.StationService;
+import org.springframework.data.geo.GeoResults;
 import org.springframework.web.bind.annotation.*;
 
+import java.net.UnknownHostException;
 import java.util.List;
 
 @RestController
@@ -44,5 +47,11 @@ public class StationResource {
     public @ResponseBody
     List<Station> list() {
         return stationService.list();
+    }
+
+    @RequestMapping(value = "/station/point", method = RequestMethod.POST)
+    public @ResponseBody
+    GeoResults<Station> findGeo(@RequestBody GeoDTO geoDTO) throws UnknownHostException {
+        return stationService.findGeo(geoDTO);
     }
 }
