@@ -75,7 +75,7 @@ public class StationService {
 
     public GeoResults<Station> findGeo(GeoDTO dto) throws UnknownHostException {
         NearQuery query = NearQuery.near(dto.getLatitude(), dto.getLongitude())
-                .maxDistance(dto.getRadios())
+                .maxDistance(dto.getRadios() * 1000)
                 .query(Query.query(Criteria.where("company_id").is(dto.getId()))).spherical(true);
         return configuration.mongoTemplate().geoNear(query, Station.class);
     }
